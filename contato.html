@@ -149,6 +149,15 @@ button:hover {
                 <li><a href="contato.html">Contato</a></li>
             </ul>
         </nav>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+               
+                       <div vw class="enabled">
+                           <div vw-access-button class="active"></div>
+                           <div vw-plugin-wrapper></div>
+                       </div>
     </header>
 
     <div id="accessibility-menu" aria-label="Menu de acessibilidade">
@@ -227,7 +236,6 @@ button:hover {
             return isValid;
         }
 
-        // Ativar VLibras
         function loadVLibras() {
             const script = document.createElement('script');
             script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
@@ -239,21 +247,20 @@ button:hover {
             };
         }
 
-        // Modo daltônico
+   
         let isDaltonicMode = false;
         function toggleDaltonicMode() {
             document.body.classList.toggle('daltonic-mode', !isDaltonicMode);
             isDaltonicMode = !isDaltonicMode;
         }
 
-        // Alto contraste
+       
         let isHighContrast = false;
         function toggleHighContrast() {
             document.body.classList.toggle('high-contrast', !isHighContrast);
             isHighContrast = !isHighContrast;
         }
 
-        // Event listeners
         document.getElementById('libras-button').addEventListener('click', loadVLibras);
         document.getElementById('daltonism-button').addEventListener('click', toggleDaltonicMode);
         document.getElementById('contrast-button').addEventListener('click', toggleHighContrast);

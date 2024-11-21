@@ -1,3 +1,10 @@
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+    
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -19,6 +26,10 @@
                 <li><a href="contato.html">Contato</a></li>
             </ul>
         </nav>
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper></div>
+        </div>
     </header>
     <div id="accessibility-menu" aria-label="Menu de acessibilidade">
         <button id="libras-button" aria-label="Ativar tradução para Libras">Acessibilidade</button>
@@ -50,7 +61,7 @@
     </footer>
 
     <script>
-        // Inserindo o VLibras
+ 
         function loadVLibras() {
             const script = document.createElement('script');
             script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
@@ -62,7 +73,7 @@
             };
         }
 
-// Alteração para daltonismo
+
         let isDaltonicMode = false;
         function toggleDaltonicMode() {
             const mainContent = document.querySelector('body > :not(#accessibility-menu)');
@@ -75,7 +86,7 @@
         }
 
 
-        // Alteração para alto contraste
+
         let isHighContrast = false;
         function toggleHighContrast() {
             const body = document.body;
@@ -87,7 +98,7 @@
             isHighContrast = !isHighContrast;
         }
 
-        // Eventos nos botões
+
         document.getElementById('libras-button').addEventListener('click', loadVLibras);
         document.getElementById('daltonism-button').addEventListener('click', toggleDaltonicMode);
         document.getElementById('contrast-button').addEventListener('click', toggleHighContrast);
@@ -106,7 +117,7 @@
 }
 
 main {
-    flex: 1; /* Faz o conteúdo principal crescer e empurrar o footer para baixo */
+    flex: 1; 
     max-width: 800px;
     margin: 2rem auto;
     padding: 1rem;
