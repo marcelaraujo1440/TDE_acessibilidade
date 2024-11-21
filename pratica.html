@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site acessível sobre acessibilidade na vida cotidiana">
+    <title>Home - Acessibilidade no Cotidiano</title>
+    <link rel="stylesheet" href="/TDE_acessibilidade/style.css">
+</head>
+<body>
+    <header role="banner">
+        <h1>Acessibilidade no Cotidiano</h1>
+        <nav aria-label="Menu principal">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="def_acessibilidade.html">O que é acessibilidade?</a></li>
+                <li><a href="pratica.html">Acessibilidade na prática</a></li>
+                <li><a href="ferramentas.html">Ferramentas</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="accessibility-menu" aria-label="Menu de acessibilidade">
+        <button id="libras-button" aria-label="Ativar tradução para Libras">Acessibilidade</button>
+        <button id="daltonism-button" aria-label="Ativar modo para daltônicos">Daltonismo</button>
+        <button id="contrast-button" aria-label="Ativar alto contraste">Contraste</button>
+    </div>
+
+    <main>
+        <h1>Acessibilidade Digital na prática</h1>
+        <div class="qa-container">
+            <div class="qa-item">
+                <p class="text-content">1. Textos alternativos para imagens:</p>
+                <p class="respo-text">Descrições para imagens que leitores de tela podem interpretar para usuários com deficiência visual.</p>
+            </div>
+            <div class="qa-item">
+                <p class="text-content">2. Legendas de áudio em vídeos:</p>
+                <p class="respo-text">Auxiliam pessoas com deficiência auditiva a compreender o conteúdo audiovisual.</p>
+            </div>
+            <div class="qa-item">
+                <p class="text-content">3. Navegação por teclado:</p>
+                <p class="respo-text">Sites que podem ser completamente acessados sem o uso do mouse, ajudando pessoas com mobilidade reduzida.</p>
+            </div>
+            <div class="qa-item">
+                <p class="text-content">4. Contraste adequado e texto legível:</p>
+                <p class="respo-text">Combinação de cores que facilita a leitura para pessoas com baixa visão ou daltonismo.</p>
+            </div>
+            <div class="qa-item">
+                <p class="text-content">5. Linguagem simples e clara:</p>
+                <p class="respo-text">Conteúdo escrito de forma direta, permitindo a compreensão por pessoas com dificuldades cognitivas.</p>
+            </div>
+        </div>
+        
+        
+        <img src="/TDE_acessibilidade/img/valuesoftsistemas_valuehosthospedagem_image_206.jpeg.webp" alt="">
+        <p class="text-content-1">"Acessibilidade digital não é um favor, é um direito que conecta todos ao mundo online."
+     
+        
+    </main>
+
+
+    
+
+    <footer role="contentinfo">
+        <p>&copy; 2024 - Acessibilidade no Cotidiano | Criado por Marcel Araújo</p>
+    </footer>
+
+    <script>
+
+        function loadVLibras() {
+            const script = document.createElement('script');
+            script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+            script.defer = true;
+            document.body.appendChild(script);
+
+            script.onload = () => {
+                new window.VLibras.Widget('https://vlibras.gov.br/app');
+            };
+        }
+
+        let isDaltonicMode = false;
+        function toggleDaltonicMode() {
+            const mainContent = document.querySelector('body > :not(#accessibility-menu)');
+            if (!isDaltonicMode) {
+                mainContent.style.filter = 'grayscale(100%)';
+            } else {
+                mainContent.style.filter = 'none';
+            }
+            isDaltonicMode = !isDaltonicMode;
+        }
+
+
+
+        let isHighContrast = false;
+        function toggleHighContrast() {
+            const body = document.body;
+            if (!isHighContrast) {
+                body.classList.add('high-contrast');
+            } else {
+                body.classList.remove('high-contrast');
+            }
+            isHighContrast = !isHighContrast;
+        }
+        document.getElementById('libras-button').addEventListener('click', loadVLibras);
+        document.getElementById('daltonism-button').addEventListener('click', toggleDaltonicMode);
+        document.getElementById('contrast-button').addEventListener('click', toggleHighContrast);
+    </script>
+</body>
+</html>
+<style>
+.qa-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    max-width: 800px;
+    margin: 0 auto; 
+}
+
+.qa-item {
+    display: flex;
+ 
+}
+
+.text-content {
+    flex: 1; 
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.respo-text {
+    flex: 1; 
+    font-size: 1rem;
+    color: #34495e;
+    line-height: 1.6;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #2c3e50;
+}
+
+main {
+    flex: 1; /* Faz o conteúdo principal crescer e empurrar o footer para baixo */
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+
+</style>

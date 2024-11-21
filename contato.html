@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de contato do site Acessibilidade no Cotidiano">
+    <title>Contato - Acessibilidade no Cotidiano</title>
+    <link rel="stylesheet" href="/TDE_acessibilidade/style.css">
+<style>
+
+
+header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+
+#accessibility-menu {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: #2c3e50;
+    padding: 1rem;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#accessibility-menu button {
+    background: #34495e;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+#accessibility-menu button:hover {
+    background: #3b4f6a;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+main h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}   
+ body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+
+    display: block;
+    position: relative;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #2c3e50;
+}
+
+main {
+    flex: 1; 
+
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    top: 100px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+input, textarea, button {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+button {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.9rem;
+}
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <h1>Acessibilidade no Cotidiano</h1>
+        <nav aria-label="Menu principal">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="def_acessibilidade.html">O que é acessibilidade?</a></li>
+                <li><a href="pratica.html">Acessibilidade na prática</a></li>
+                <li><a href="ferramentas.html">Ferramentas</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="accessibility-menu" aria-label="Menu de acessibilidade">
+        <button id="libras-button" aria-label="Ativar tradução para Libras">Acessibilidade</button>
+        <button id="daltonism-button" aria-label="Ativar modo para daltônicos">Daltonismo</button>
+        <button id="contrast-button" aria-label="Ativar alto contraste">Contraste</button>
+    </div>
+
+    <main>
+        <h1>Entre em Contato</h1>
+        <form id="contact-form" onsubmit="return validateForm(event)">
+            <div>
+                <label for="name">Nome completo:</label>
+                <input type="text" id="name" name="name" placeholder="Digite seu nome">
+                <p class="error-message" id="name-error"></p>
+            </div>
+            <div>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail">
+                <p class="error-message" id="email-error"></p>
+            </div>
+            <div>
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" placeholder="Digite sua mensagem"></textarea>
+                <p class="error-message" id="message-error"></p>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2024 - Acessibilidade no Cotidiano | Criado por Marcel Araújo</p>
+    </footer>
+
+    <script>
+        
+        function validateForm(event) {
+            event.preventDefault();
+            let isValid = true;
+
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const message = document.getElementById('message');
+
+           
+            document.getElementById('name-error').textContent = '';
+            document.getElementById('email-error').textContent = '';
+            document.getElementById('message-error').textContent = '';
+
+           
+            if (name.value.trim() === '') {
+                document.getElementById('name-error').textContent = 'O nome é obrigatório.';
+                isValid = false;
+            }
+
+           
+            if (email.value.trim() === '') {
+                document.getElementById('email-error').textContent = 'O e-mail é obrigatório.';
+                isValid = false;
+            } else if (!/\S+@\S+\.\S+/.test(email.value)) {
+                document.getElementById('email-error').textContent = 'Informe um e-mail válido.';
+                isValid = false;
+            }
+
+           
+            if (message.value.trim() === '') {
+                document.getElementById('message-error').textContent = 'A mensagem é obrigatória.';
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Formulário enviado com sucesso!');
+                document.getElementById('contact-form').reset();
+            }
+
+            return isValid;
+        }
+
+        // Ativar VLibras
+        function loadVLibras() {
+            const script = document.createElement('script');
+            script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+            script.defer = true;
+            document.body.appendChild(script);
+
+            script.onload = () => {
+                new window.VLibras.Widget('https://vlibras.gov.br/app');
+            };
+        }
+
+        // Modo daltônico
+        let isDaltonicMode = false;
+        function toggleDaltonicMode() {
+            document.body.classList.toggle('daltonic-mode', !isDaltonicMode);
+            isDaltonicMode = !isDaltonicMode;
+        }
+
+        // Alto contraste
+        let isHighContrast = false;
+        function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast', !isHighContrast);
+            isHighContrast = !isHighContrast;
+        }
+
+        // Event listeners
+        document.getElementById('libras-button').addEventListener('click', loadVLibras);
+        document.getElementById('daltonism-button').addEventListener('click', toggleDaltonicMode);
+        document.getElementById('contrast-button').addEventListener('click', toggleHighContrast);
+    </script>
+</body>
+</html>
